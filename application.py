@@ -175,7 +175,7 @@ def register():
             return apology("please enter password")
         if not request.form.get("password") == request.form.get("password2"):
             return apology("passwords don't match")
-        success = db.execute("INSERT INTO 'users' (username, hash) VALUES (:username, :hash)", username = request.form.get("username"), hash = pwd_context.hash(request.form.get("password")))
+        success = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)", username = request.form.get("username"), hash = pwd_context.hash(request.form.get("password")))
         if success == None:
             return apology("username already exists")
     else:
