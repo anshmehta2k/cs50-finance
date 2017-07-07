@@ -4,6 +4,7 @@ from flask_session import Session
 from passlib.apps import custom_app_context as pwd_context
 from tempfile import mkdtemp
 import os
+import psycopg2
 
 from helpers import *
 
@@ -29,7 +30,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db")
+db = SQL(os.environ.get("DATABASE_URL") or "sqlite:///finance.db")
 
 @app.route("/")
 @login_required

@@ -1,3 +1,4 @@
+psycopg2
 cs50
 Flask
 Flask-Session
